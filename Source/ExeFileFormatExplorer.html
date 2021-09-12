@@ -1,0 +1,66 @@
+<html>
+<html>
+<body>
+
+<div id="divUi">
+
+	<h3>EXE File Format Explorer</h3>
+
+	<p>Upload an .exe file to see a description of its file structure.</p>
+
+	<input type="file" onchange="inputFile_Changed(this);"></input>
+	<br />
+
+	<label>File Structure:</label>
+	<br />
+	<textarea id="textareaFileStructure" cols="80" rows="25"></textarea>
+
+</div>
+
+<script type="text/javascript">
+
+// UI event handlers.
+
+function inputFile_Changed(inputFile)
+{
+	var file = inputFile.files[0];
+	if (file != null)
+	{
+		var fileReader = new FileReader();
+
+		fileReader.onload = (fileLoadedEvent) =>
+		{
+			var fileAsBytes = fileLoadedEvent.target.result;
+			var exeFile = ExeFile.fromFilePathAndBytes
+			(
+				file.name, fileAsBytes
+			);
+
+			var exeFileAsString =
+				JSON.stringify(exeFile, null, 4);
+
+			var textareaFileStructure =
+				document.getElementById("textareaFileStructure");
+			textareaFileStructure.value = exeFileAsString;
+		}
+
+		fileReader.readAsBinaryString(file);
+	}
+}
+
+</script>
+
+<script type="text/javascript" src="ByteStreamLittleEndian.js"></script>
+<script type="text/javascript" src="Characteristics.js"></script>
+<script type="text/javascript" src="ExeFile.js"></script>
+<script type="text/javascript" src="ExportDirectory.js"></script>
+<script type="text/javascript" src="ImportDirectory.js"></script>
+<script type="text/javascript" src="MZSection.js"></script>
+<script type="text/javascript" src="OptionalHeader.js"></script>
+<script type="text/javascript" src="PESectionHeader.js"></script>
+<script type="text/javascript" src="SectionHeader.js"></script>
+<script type="text/javascript" src="VirtualAddressAndSize.js"></script>
+<script type="text/javascript" src="VirtualAddresses.js"></script>
+
+</body>
+</html>
