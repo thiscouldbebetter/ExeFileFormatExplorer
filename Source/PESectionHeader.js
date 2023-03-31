@@ -6,7 +6,7 @@ class PESectionHeader
 		peString,
 		machine,
 		numberOfSections,
-		timeDateStamp,
+		timeCreatedInSecondsSince1969,
 		pointerToSymbolTable,
 		numberOfSymbols,
 		sizeOfOptionalHeader,
@@ -16,7 +16,7 @@ class PESectionHeader
 		this.peString = peString;
 		this.machine = machine = machine;
 		this.numberOfSections = numberOfSections;
-		this.timeDateStamp = timeDateStamp;
+		this.timeCreatedInSecondsSince1969 = timeCreatedInSecondsSince1969; // Reportedly, since Windows 10, this is usually nonsense.
 		this.pointerToSymbolTable = pointerToSymbolTable;
 		this.numberOfSymbols = numberOfSymbols;
 		this.sizeOfOptionalHeader = sizeOfOptionalHeader;

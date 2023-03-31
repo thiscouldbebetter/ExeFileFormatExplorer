@@ -3,7 +3,7 @@ class OptionalHeader
 {
 	constructor
 	(
-		magicNumber,
+		executableType,
 		majorLinkerVersion,
 		minorLinkerVersion,
 		sizeOfCode,
@@ -36,7 +36,7 @@ class OptionalHeader
 		numberOfRVAAndSizes
 	)
 	{
-		this.magicNumber = magicNumber;
+		this.executableType = executableType;
 		this.majorLinkerVersion = majorLinkerVersion;
 		this.minorLinkerVersion = minorLinkerVersion;
 		this.sizeOfCode = sizeOfCode;
